@@ -1,24 +1,40 @@
 let currFolder;
 
+// Static song data for each folder
+const songData = {
+    "music/chill": [
+        "electronica-retro-dramatic.mp3",
+        "Good night.mp3", 
+        "Lost in dreams.mp3",
+        "Morning garden.mp3",
+        "Sweet Life.mp3"
+    ],
+    "music/jazz": [
+        "Background Jazz.mp3",
+        "electronica-retro-dramatic.mp3",
+        "Relax Jazz.mp3", 
+        "Smooth Instrumental Jazz.mp3"
+    ],
+    "music/morning_coffee": [
+        "electronica-retro-dramatic.mp3",
+        "Isolation-Waltz.mp3",
+        "retro-lounge.mp3",
+        "synthwave-serenity.mp3"
+    ],
+    "music/workout": [
+        "electronica-retro-dramatic.mp3",
+        "gym1.mp3",
+        "gym2.mp3", 
+        "gym3.mp3"
+    ]
+};
+
 async function getsongs(folder) {
     currFolder = folder;
-    let a = await fetch(`http://127.0.0.1:3000/${folder}/`)
-    let response = await a.text()
-
-    let div = document.createElement("div")
-    div.innerHTML = response;
-
-    let as = div.getElementsByTagName("a")
-    console.log(as);
-
-    let songs = []
-    for (let index = 0; index < as.length; index++) {
-        const element = as[index];
-        if (element.href.endsWith(".mp3")) {
-            // Extract just the filename from the full URL
-            songs.push(element.href.split("/").pop())
-        }
-    }
+    
+    // Return songs from static data instead of fetching
+    let songs = songData[folder] || [];
+    console.log(songs);
     return songs;
 }
 
@@ -54,7 +70,7 @@ function playMusic(track, pause=false) {
 }
 
 async function main() {
-    let songs = await getsongs("music/morning_coffe")  // Fixed: using correct folder name
+    let songs = await getsongs("music/morning_coffee")  // Fixed: using correct folder name
     console.log(songs);
 
     if (songs.length > 0) {
