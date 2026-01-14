@@ -60,10 +60,10 @@ You can also change the volume level through volume bar in the seek bar.
 
 **Screenshots:**
 This is an example of the website and how it will look for any particular playlist
-<a href="/imgs/playlist.png">
+<img src="/imgs/playlist.png">
 
 This is an example of the seekbar on the website
-<a href="imgs/seekbar.png">
+<img src="imgs/seekbar.png">
 
 **Find a bug?**
 If you find any bug or any suggestions contact me via my email: dhruvprj1001@gmail.com
